@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> {{blog.name}} </h1>
+<h3> In the wise words of {{ blog.author }}, </h3>
+<h4> {{ blog.description }} </h4>
+
+
+<a href="{% url 'blog_comment' blog.id %}">Add a fookin comment eh</a>
+
+{% if blog.blogcomment_set.all %}
+
+<ul>
+{% for comment in blog.blogcomment_set.all %}
+    <li>
+        {{ comment.author }} says- "{{comment.description}}"
+    </li>
+{% endfor %}
+
+</ul>
+
+
+{% else %}
+<h5> no comments </h5>
+{% endif %}
+
+
+{% endblock %}

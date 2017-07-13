@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> {{blogauthor.user}} </h1>
+<h5> It's his world out there</h5>
+
+<p> The list of rambles </p>
+
+{% if blogauthor.blog_set.all %}
+    <ul>
+    {% for blog in blogauthor.blog_set.all %}
+        <li>
+
+            <a href="{% url 'blog_detail' blog.pk %}"> {{ blog.name }} </a>
+
+        </li>
+    {% endfor %}
+    </ul>
+
+
+
+{% else %}
+<p> No rambles...yet </p>
+{% endif %}
+
+
+
+{% endblock %}
